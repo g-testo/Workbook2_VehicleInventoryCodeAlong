@@ -2,13 +2,17 @@ package com.gt;
 
 public class Main {
     public static void main(String[] args) {
-        Vehicle gregsVroomVroom = new Vehicle(
-                12121212,
-                "Honda Accord",
-                "White",
-                200_000,
-                2_000
-        );
+
+        Vehicle[] vehicles = new Vehicle[20];
+        int totalNumOfVehicles = 0;
+
+        vehicles[0] = new Vehicle(12121212, "Honda Accord", "White", 200_000, 2_000);
+        vehicles[1] = new Vehicle(12121213, "Honda Fit", "White", 120_000, 1_900);
+        vehicles[2] = new Vehicle(12121214, "Tesla Type S", "Red", 130_000, 1_800);
+        vehicles[3] = new Vehicle(12121215, "Toyota Camry", "Orange", 140_000, 1_700);
+        vehicles[4] = new Vehicle(12121216, "Ford Focus", "Black", 150_000, 1_600);
+        vehicles[5] = new Vehicle(12121217, "Ferrari Enzo", "Yellow", 160_000, 1_500);
+
 
         System.out.println(gregsVroomVroom.getMakeModel());
     }
