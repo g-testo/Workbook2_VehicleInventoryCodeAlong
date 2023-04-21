@@ -10,6 +10,7 @@ public class Main {
         Vehicle[] vehicles = new Vehicle[20];
 
         vehicles[0] = new Vehicle(12121212, "Honda Accord", "White", 200_000, 2_000);
+        // 1: Id: 12121212, Make/Model: Honda Accord, Color: White, Odometer Reading: 200000, price: 2000
         vehicles[1] = new Vehicle(12121213, "Honda Fit", "White", 120_000, 1_900);
         vehicles[2] = new Vehicle(12121214, "Tesla Type S", "Red", 130_000, 1_800);
         vehicles[3] = new Vehicle(12121215, "Toyota Camry", "Orange", 140_000, 1_700);
@@ -44,6 +45,20 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("List all vehicles");
+                    System.out.println(vehicles.length);
+                    for(int i=0;i<vehicles.length;i++){
+                        if(vehicles[i] == null){
+                            break;
+                        }
+                        System.out.printf("%d: Id: %d, Make/Model: %s, Color: %s, Odometer Reading: %d, price: %f\n",
+                                i+1,
+                                vehicles[i].getVehicleId(),
+                                vehicles[i].getMakeModel(),
+                                vehicles[i].getColor(),
+                                vehicles[i].getOdometerReading(),
+                                vehicles[i].getPrice()
+                        );
+                    }
                     break;
                 case 5:
                     System.out.println("Add a vehicle");
