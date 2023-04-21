@@ -9,19 +9,20 @@ public class Main {
 
         Vehicle[] vehicles = new Vehicle[20];
 
-        vehicles[0] = new Vehicle(12121212, "Honda Accord", "White", 200_000, 2_000);
+        vehicles[0] = new Vehicle(12121212, "Honda/Accord", "White", 200_000, 2_000);
         // 1: Id: 12121212, Make/Model: Honda Accord, Color: White, Odometer Reading: 200000, price: 2000
-        vehicles[1] = new Vehicle(12121213, "Honda Fit", "White", 120_000, 1_900);
-        vehicles[2] = new Vehicle(12121214, "Tesla Type S", "Red", 130_000, 1_800);
-        vehicles[3] = new Vehicle(12121215, "Toyota Camry", "Orange", 140_000, 1_700);
-        vehicles[4] = new Vehicle(12121216, "Ford Focus", "Black", 150_000, 1_600);
-        vehicles[5] = new Vehicle(12121217, "Ferrari Enzo", "Yellow", 160_000, 1_500);
+        vehicles[1] = new Vehicle(12121213, "Honda/Fit", "White", 120_000, 1_900);
+        vehicles[2] = new Vehicle(12121214, "Tesla/Type S", "Red", 130_000, 1_800);
+        vehicles[3] = new Vehicle(12121215, "Toyota/Camry", "Orange", 140_000, 1_700);
+        vehicles[4] = new Vehicle(12121216, "Ford/Focus", "Black", 150_000, 1_600);
+        vehicles[5] = new Vehicle(12121217, "Ferrari/Enzo", "Yellow", 160_000, 1_500);
 
         int totalNumOfVehicles = vehicles.length;
 
         int commandInput;
+        String userInput;
         do {
-            Thread.sleep(1000);
+//            Thread.sleep(1000);
             System.out.println("What do you want to do?\n" +
                     "\t1 - Find vehicles that match make/model\n" +
                     "\t2 - Find vehicles that fall within a price range\n" +
@@ -33,9 +34,28 @@ public class Main {
             );
             commandInput = scanner.nextInt();
 
+
             switch(commandInput){
                 case 1:
-                    System.out.println("Find vehicle by make/model");
+                    System.out.print("Please provide a make/model: ");
+                    userInput = scanner.next();
+
+                    for(int i=0;i<vehicles.length;i++){
+                        if(vehicles[i] == null){
+                            break;
+                        }
+                        String currentMakeModel = vehicles[i].getMakeModel();
+                        if(currentMakeModel.equalsIgnoreCase(userInput)) { // if the given make/model matches
+                            System.out.printf("%d: Id: %d, Make/Model: %s, Color: %s, Odometer Reading: %d, price: %f\n",
+                                    i + 1,
+                                    vehicles[i].getVehicleId(),
+                                    vehicles[i].getMakeModel(),
+                                    vehicles[i].getColor(),
+                                    vehicles[i].getOdometerReading(),
+                                    vehicles[i].getPrice()
+                            );
+                        }
+                    }
                     break;
                 case 2:
                     System.out.println("Find vehicle by price");
@@ -45,11 +65,11 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("List all vehicles");
-                    System.out.println(vehicles.length);
                     for(int i=0;i<vehicles.length;i++){
                         if(vehicles[i] == null){
                             break;
                         }
+
                         System.out.printf("%d: Id: %d, Make/Model: %s, Color: %s, Odometer Reading: %d, price: %f\n",
                                 i+1,
                                 vehicles[i].getVehicleId(),
@@ -58,6 +78,7 @@ public class Main {
                                 vehicles[i].getOdometerReading(),
                                 vehicles[i].getPrice()
                         );
+
                     }
                     break;
                 case 5:
@@ -69,7 +90,6 @@ public class Main {
                 default:
                     System.out.println("Command not found");
             }
-
         } while(commandInput != 6);
     }
 }
