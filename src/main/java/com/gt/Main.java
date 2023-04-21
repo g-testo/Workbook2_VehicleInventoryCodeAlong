@@ -1,10 +1,13 @@
 package com.gt;
 
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        Scanner scanner = new Scanner(System.in);
 
         Vehicle[] vehicles = new Vehicle[20];
-        int totalNumOfVehicles = 0;
 
         vehicles[0] = new Vehicle(12121212, "Honda Accord", "White", 200_000, 2_000);
         vehicles[1] = new Vehicle(12121213, "Honda Fit", "White", 120_000, 1_900);
@@ -13,8 +16,46 @@ public class Main {
         vehicles[4] = new Vehicle(12121216, "Ford Focus", "Black", 150_000, 1_600);
         vehicles[5] = new Vehicle(12121217, "Ferrari Enzo", "Yellow", 160_000, 1_500);
 
+        int totalNumOfVehicles = vehicles.length;
 
-        System.out.println(gregsVroomVroom.getMakeModel());
+        int commandInput;
+        do {
+            Thread.sleep(1000);
+            System.out.println("What do you want to do?\n" +
+                    "\t1 - Find vehicles that match make/model\n" +
+                    "\t2 - Find vehicles that fall within a price range\n" +
+                    "\t3 - Find vehicles that match a color\n" +
+                    "\t4 - List all vehicles\n" +
+                    "\t5 - Add a vehicle\n" +
+                    "\t6 - Quit\n" +
+                    "Enter your command:\n"
+            );
+            commandInput = scanner.nextInt();
+
+            switch(commandInput){
+                case 1:
+                    System.out.println("Find vehicle by make/model");
+                    break;
+                case 2:
+                    System.out.println("Find vehicle by price");
+                    break;
+                case 3:
+                    System.out.println("Find vehicle by color");
+                    break;
+                case 4:
+                    System.out.println("List all vehicles");
+                    break;
+                case 5:
+                    System.out.println("Add a vehicle");
+                    break;
+                case 6:
+                    System.out.println("Quiting");
+                    break;
+                default:
+                    System.out.println("Command not found");
+            }
+
+        } while(commandInput != 6);
     }
 }
 
