@@ -17,10 +17,9 @@ public class Main {
         vehicles[4] = new Vehicle(12121216, "Ford/Focus", "Black", 150_000, 1_600);
         vehicles[5] = new Vehicle(12121217, "Ferrari/Enzo", "Yellow", 160_000, 1_500);
 
-        int totalNumOfVehicles = vehicles.length;
+        int totalNumOfVehicles = 6;
 
         int commandInput;
-        String userInput;
         do {
 //            Thread.sleep(1000);
             System.out.println("What do you want to do?\n" +
@@ -38,7 +37,7 @@ public class Main {
             switch(commandInput){
                 case 1:
                     System.out.print("Please provide a make/model: ");
-                    userInput = scanner.next();
+                    String userInput = scanner.next();
 
                     for(int i=0;i<vehicles.length;i++){
                         if(vehicles[i] == null){
@@ -78,11 +77,22 @@ public class Main {
                                 vehicles[i].getOdometerReading(),
                                 vehicles[i].getPrice()
                         );
-
                     }
                     break;
                 case 5:
-                    System.out.println("Add a vehicle");
+                    // Incomplete but should demonstrate how to complete this case
+                    System.out.println("Please provide information for a new vehicle: ");
+                    System.out.print("Make/Model: ");
+                    String makeModelInput = scanner.next();
+                    System.out.print("Color: ");
+                    String colorInput = scanner.next();
+
+                    vehicles[totalNumOfVehicles] = new Vehicle(0,makeModelInput,colorInput,0,0);
+
+                    totalNumOfVehicles++;
+
+                    System.out.println("Vehicle added successfully");
+
                     break;
                 case 6:
                     System.out.println("Quiting");
